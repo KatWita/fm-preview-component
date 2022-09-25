@@ -1,0 +1,278 @@
+@use './colors' as *;
+
+* {
+	box-sizing: border-box;
+	margin: 0;
+	padding: 0;
+}
+
+html {
+	font-size: 62.5%;
+}
+
+body {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	min-height: 100vh;
+	background-color: $light-grayish-blue;
+	font-family: 'Manrope', sans-serif;
+	font-size: 1.3rem;
+}
+
+// ------------------------
+.attribution {
+	font-size: 11px;
+	text-align: center;
+}
+
+.attribution a {
+	color: $desaturated-dark-blue;
+}
+// ------------------------
+
+.card {
+	margin: 0 auto 5em;
+	width: 85%;
+	max-width: 500px;
+	background-color: $white;
+	color: $very-dark-grayish-blue;
+	border-radius: 10px;
+	overflow: hidden;
+
+	&__img {
+		img {
+			display: block;
+			width: 100%;
+			height: 21rem;
+			object-fit: cover;
+			object-position: top;
+		}
+	}
+
+	&__upper {
+		padding: 3.5rem 3.1rem 0;
+	}
+
+	&__headline {
+		font-size: 1.6rem;
+		line-height: 1.5em;
+	}
+
+	&__text {
+		margin: 1.2em 0 1.4em;
+		line-height: 2rem;
+		color: $desaturated-dark-blue;
+	}
+
+	&__footer,
+	&__footer-user {
+		display: flex;
+		align-items: center;
+	}
+
+	&__footer-user {
+		gap: 1.2em;
+	}
+
+	&__footer {
+		padding: 1.7rem 3.1rem;
+		justify-content: space-between;
+		position: relative;
+	}
+
+	&__userimg {
+		width: 40px;
+		border-radius: 50%;
+	}
+
+	&__footer-text {
+		display: flex;
+		flex-direction: column;
+		gap: 0.15em;
+	}
+
+	&__name {
+		font-weight: bold;
+	}
+
+	&__date {
+		color: $grayish-blue;
+	}
+
+	&__share-btn {
+		position: relative;
+		padding: 1.6rem;
+		background-color: $light-grayish-blue;
+		border-radius: 50%;
+		z-index: 1;
+		cursor: pointer;
+		transition: background-color 0.3s ease-in-out;
+
+		svg {
+			position: absolute;
+			top: 50%;
+			left: 50%;
+			transform: translate(-50%, -50%);
+
+			path {
+				transition: fill 0.3s;
+			}
+		}
+
+		&--active,
+		&:hover {
+			background-color: $desaturated-dark-blue;
+
+			svg path {
+				fill: #ffff;
+			}
+		}
+	}
+
+	&__socialmedia {
+		position: absolute;
+		background-color: $very-dark-grayish-blue;
+		width: 100%;
+		height: 100%;
+		display: none;
+		align-items: center;
+		gap: 1.4em;
+		top: 0;
+		left: 0;
+		padding-left: 3.1rem;
+
+		&--active {
+			display: flex;
+			animation: showActive 0.6s;
+		}
+	}
+
+	&__sharetxt {
+		color: $grayish-blue;
+		letter-spacing: 5px;
+		text-transform: uppercase;
+	}
+
+	&__media {
+		display: flex;
+		align-items: center;
+		gap: 1.3em;
+	}
+
+	&__media-icon {
+		width: 22px;
+		cursor: pointer;
+		transition: scale 0.3s;
+
+		&:hover {
+			scale: 0.85;
+		}
+	}
+}
+
+@media (min-width: 1100px) {
+	.card {
+		display: flex;
+		min-width: 730px;
+		overflow: visible;
+
+		&__img {
+			img {
+				border-radius: 10px 0 0 10px;
+				height: 100%;
+				object-position: left;
+			}
+		}
+
+		&__body {
+			width: 131%;
+		}
+
+		&__upper {
+			padding: 3.2rem 4rem 0;
+		}
+
+		&__headline {
+			font-size: 2rem;
+		}
+
+		&__footer-text {
+			display: flex;
+			flex-direction: column;
+			justify-content: center;
+			gap: 0.19em;
+		}
+
+		&__text,
+		&__name,
+		&__date {
+			font-size: 1.3rem;
+		}
+
+		&__text {
+			color: $desaturated-dark-blue;
+			line-height: 24px;
+			margin: 0.5em 0 1.2em;
+		}
+
+		&__userimg {
+			width: 45px;
+		}
+
+		&__body {
+			position: relative;
+		}
+
+		&__footer {
+			position: unset;
+			padding: 0 4rem 3rem;
+		}
+
+		&__sharetxt {
+			font-size: 1.4rem;
+		}
+
+		&__socialmedia {
+			position: absolute;
+			display: none;
+			gap: 1em;
+			padding: 2rem 4.2rem;
+			width: auto;
+			height: auto;
+			top: unset;
+			left: 56%;
+			bottom: 33.5%;
+			border-radius: 10px;
+			background-color: $very-dark-grayish-blue;
+
+			&--active {
+				display: flex;
+				animation: showActive 0.6s;
+			}
+		}
+
+		&__socialmedia::before {
+			content: '';
+			position: absolute;
+			bottom: -12px;
+			left: 50%;
+			transform: translateX(-50%);
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 15px 15px 0 15px;
+			border-color: #48556a transparent transparent transparent;
+		}
+	}
+}
+
+@keyframes showActive {
+	from {
+		opacity: 0;
+	}
+	to {
+		opacity: 1;
+	}
+}

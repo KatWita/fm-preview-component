@@ -1,0 +1,242 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: hsl(217deg, 30%, 92%);
+  font-family: "Manrope", sans-serif;
+  font-size: 1.3rem;
+}
+
+.attribution {
+  font-size: 11px;
+  text-align: center;
+}
+
+.attribution a {
+  color: hsl(214deg, 17%, 51%);
+}
+
+.card {
+  margin: 0 auto 5em;
+  width: 85%;
+  max-width: 500px;
+  background-color: hsl(0deg, 0%, 97%);
+  color: #48556a;
+  border-radius: 10px;
+  overflow: hidden;
+}
+.card__img img {
+  display: block;
+  width: 100%;
+  height: 21rem;
+  -o-object-fit: cover;
+     object-fit: cover;
+  -o-object-position: top;
+     object-position: top;
+}
+.card__upper {
+  padding: 3.5rem 3.1rem 0;
+}
+.card__headline {
+  font-size: 1.6rem;
+  line-height: 1.5em;
+}
+.card__text {
+  margin: 1.2em 0 1.4em;
+  line-height: 2rem;
+  color: hsl(214deg, 17%, 51%);
+}
+.card__footer, .card__footer-user {
+  display: flex;
+  align-items: center;
+}
+.card__footer-user {
+  gap: 1.2em;
+}
+.card__footer {
+  padding: 1.7rem 3.1rem;
+  justify-content: space-between;
+  position: relative;
+}
+.card__userimg {
+  width: 40px;
+  border-radius: 50%;
+}
+.card__footer-text {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15em;
+}
+.card__name {
+  font-weight: bold;
+}
+.card__date {
+  color: hsl(212deg, 23%, 69%);
+}
+.card__share-btn {
+  position: relative;
+  padding: 1.6rem;
+  background-color: hsl(217deg, 30%, 92%);
+  border-radius: 50%;
+  z-index: 1;
+  cursor: pointer;
+  transition: background-color 0.3s ease-in-out;
+}
+.card__share-btn svg {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+.card__share-btn svg path {
+  transition: fill 0.3s;
+}
+.card__share-btn--active, .card__share-btn:hover {
+  background-color: hsl(214deg, 17%, 51%);
+}
+.card__share-btn--active svg path, .card__share-btn:hover svg path {
+  fill: white;
+}
+.card__socialmedia {
+  position: absolute;
+  background-color: #48556a;
+  width: 100%;
+  height: 100%;
+  display: none;
+  align-items: center;
+  gap: 1.4em;
+  top: 0;
+  left: 0;
+  padding-left: 3.1rem;
+}
+.card__socialmedia--active {
+  display: flex;
+  -webkit-animation: showActive 0.6s;
+          animation: showActive 0.6s;
+}
+.card__sharetxt {
+  color: hsl(212deg, 23%, 69%);
+  letter-spacing: 5px;
+  text-transform: uppercase;
+}
+.card__media {
+  display: flex;
+  align-items: center;
+  gap: 1.3em;
+}
+.card__media-icon {
+  width: 22px;
+  cursor: pointer;
+  transition: scale 0.3s;
+}
+.card__media-icon:hover {
+  scale: 0.85;
+}
+
+@media (min-width: 1100px) {
+  .card {
+    display: flex;
+    min-width: 730px;
+    overflow: visible;
+  }
+  .card__img img {
+    border-radius: 10px 0 0 10px;
+    height: 100%;
+    -o-object-position: left;
+       object-position: left;
+  }
+  .card__body {
+    width: 131%;
+  }
+  .card__upper {
+    padding: 3.2rem 4rem 0;
+  }
+  .card__headline {
+    font-size: 2rem;
+  }
+  .card__footer-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 0.19em;
+  }
+  .card__text, .card__name, .card__date {
+    font-size: 1.3rem;
+  }
+  .card__text {
+    color: hsl(214deg, 17%, 51%);
+    line-height: 24px;
+    margin: 0.5em 0 1.2em;
+  }
+  .card__userimg {
+    width: 45px;
+  }
+  .card__body {
+    position: relative;
+  }
+  .card__footer {
+    position: unset;
+    padding: 0 4rem 3rem;
+  }
+  .card__sharetxt {
+    font-size: 1.4rem;
+  }
+  .card__socialmedia {
+    position: absolute;
+    display: none;
+    gap: 1em;
+    padding: 2rem 4.2rem;
+    width: auto;
+    height: auto;
+    top: unset;
+    left: 56%;
+    bottom: 33.5%;
+    border-radius: 10px;
+    background-color: #48556a;
+  }
+  .card__socialmedia--active {
+    display: flex;
+    -webkit-animation: showActive 0.6s;
+            animation: showActive 0.6s;
+  }
+  .card__socialmedia::before {
+    content: "";
+    position: absolute;
+    bottom: -12px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 0;
+    height: 0;
+    border-style: solid;
+    border-width: 15px 15px 0 15px;
+    border-color: #48556a transparent transparent transparent;
+  }
+}
+@-webkit-keyframes showActive {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+@keyframes showActive {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}/*# sourceMappingURL=main.css.map */
